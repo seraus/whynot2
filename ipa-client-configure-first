@@ -31,9 +31,9 @@ function stop_running () {
 }
 trap stop_running TERM
 
-systemctl stop dbus.service
+#systemctl stop dbus.service
 rm -rf /var/run/*.pid
-rm -f /run/systemctl-lite-running/*
+#rm -f /run/systemctl-lite-running/*
 
 if [ -n "$IPA_PORT_53_UDP_ADDR" ] ; then
 	echo "nameserver $IPA_PORT_53_UDP_ADDR" > /etc/resolv.conf

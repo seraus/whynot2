@@ -6,15 +6,26 @@ MAINTAINER Luca Gioppo
 ARG zeppelin_user=zeppelin_dock1
 ENV env_zeppelin_user=$zeppelin_user
 
-RUN yum swap -y -- remove fakesystemd -- install systemd systemd-libs && yum clean all
+ENV container docker
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
+systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+#RUN yum swap -y -- remove fakesystemd -- install systemd systemd-libs && yum clean all
 
 # Install FreeIPA client
 RUN yum install -y ipa-client dbus-python perl 'perl(Data::Dumper)' 'perl(Time::HiRes)' && yum clean all
 
-ADD dbus.service /etc/systemd/system/dbus.service
-RUN ln -sf dbus.service /etc/systemd/system/messagebus.service
+#ADD dbus.service /etc/systemd/system/dbus.service
+#RUN ln -sf dbus.service /etc/systemd/system/messagebus.service
 
-ADD systemctl /usr/bin/systemctl
+#ADD systemctl /usr/bin/systemctl
 
 RUN useradd -ms /bin/bash $env_zeppelin_user
 
@@ -66,5 +77,6 @@ ADD ipa-client-configure-first /usr/sbin/ipa-client-configure-first
 
 RUN chmod -v +x /usr/bin/systemctl /usr/sbin/ipa-client-configure-first
 
+VOLUME [ "/sys/fs/cgroup" ]
 
 ENTRYPOINT /usr/sbin/ipa-client-configure-first
