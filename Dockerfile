@@ -1,7 +1,7 @@
 # Clone from the CentOS 7
 FROM centos:centos7
 
-MAINTAINER Luca Gioppo
+MAINTAINER Sergio A
 
 ARG zeppelin_user=zeppelin_dock1
 ENV env_zeppelin_user=$zeppelin_user
