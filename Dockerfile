@@ -79,4 +79,4 @@ RUN chmod -v +x /usr/bin/systemctl /usr/sbin/ipa-client-configure-first
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-ENTRYPOINT /usr/sbin/ipa-client-configure-first
+ENTRYPOINT ["/usr/sbin/ipa-client-configure-first"]
