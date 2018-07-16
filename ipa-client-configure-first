@@ -27,9 +27,11 @@ function usage () {
 }
 
 function stop_running () {
-	systemctl stop-running
+        echo "trying to stop"
+	systemctl stop sssd
+# here we need to get the PID of the java process and send a sigterm also to it
 }
-trap stop_running TERM
+trap stop_running SIGTERM
 
 #systemctl stop dbus.service
 rm -rf /var/run/*.pid
