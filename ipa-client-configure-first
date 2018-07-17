@@ -85,7 +85,7 @@ else
 		fi
 	fi
 
-	/usr/sbin/ipa-client-install $IPA_CLIENT_INSTALL_OPTS $HOSTNAME_OPTS -p admin -w "$PASSWORD" -U -v  --mkhomedir --realm=POCHDP.CSI.IT --server=tst-kerb1.pochdp.csi.it  --enable-dns-updates < /dev/null
+	/usr/sbin/ipa-client-install $IPA_CLIENT_INSTALL_OPTS $HOSTNAME_OPTS -p admin -w "$PASSWORD" -U -v  --mkhomedir --realm=POCHDP.CSI.IT --domain=pochdp.csi.it --server=tst-kerb1.pochdp.csi.it  --enable-dns-updates < /dev/null
 	cp -f /etc/hostname /etc/hostname.ipa-client
 	echo "FreeIPA-enrolled."
 fi
