@@ -1,5 +1,5 @@
 # Clone from the CentOS 7
-FROM seraus:whynot
+FROM seraus/whynot
 
 MAINTAINER SA & OTHERS
 
