@@ -1,7 +1,7 @@
 # Clone from the CentOS 7
 FROM seraus:whynot
 
-MAINTAINER SA
+MAINTAINER SA & OTHERS
 
 
 ARG zeppelin_user=zeppelin_dock1
