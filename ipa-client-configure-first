@@ -53,7 +53,7 @@ if [ -f /etc/ipa/ca.crt ] ; then
 		fi
 	fi
 	echo "System is already FreeIPA-enrolled, starting the services."
-	systemctl start-enabled
+	#systemctl start-enabled
 	echo "System is ready."
         cd /usr/hdp/2.6.0.3-8/zeppelin
         bin/zeppelin.sh
