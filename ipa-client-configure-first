@@ -16,6 +16,14 @@
 
 set -e
 
+#inherit init (PID=1) variables
+
+for e in $(tr "\000" "\n" < /proc/1/environ); do
+        eval "export $e"
+done
+
+
+
 function usage () {
 	if [ -n "$1" ] ; then
 		echo $1 >&2
