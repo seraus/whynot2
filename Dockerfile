@@ -13,7 +13,7 @@ ADD ipa-client-configure-first /usr/sbin/ipa-client-configure-first
 
 RUN chmod -v +x /usr/bin/systemctl /usr/sbin/ipa-client-configure-first
 
-ADD freeipa-install.service /etc/systemd/system/multi-user.target.wants/freeipa-install.service
+ADD freeipa-install.service /etc/systemd/system/freeipa-install.service
 
 RUN systemctl enable freeipa-install.service
 
