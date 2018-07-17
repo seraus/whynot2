@@ -3,9 +3,6 @@ FROM centos:centos7
 
 MAINTAINER SA
 
-ARG zeppelin_user=zeppelin_dock1
-ENV env_zeppelin_user=$zeppelin_user
-
 ENV container docker
 #RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 #systemd-tmpfiles-setup.service ] || rm -f $i; done); \
