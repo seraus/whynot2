@@ -14,7 +14,8 @@ ENV container docker
 #rm -f /lib/systemd/system/basic.target.wants/*;\
 #rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-
+ADD systemctl.py /usr/bin/systemctl
+RUN chmod -v +x /usr/bin/systemctl 
 
 VOLUME [ "/sys/fs/cgroup" ]
 
